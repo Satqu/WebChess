@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Шахи Online</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/board.css">
+    <link rel="stylesheet" href="css/pieces.css">
+</head>
+<body>
+<!-- Header -->
+<header class="header">
+    <h1>♔ Шахи Online ♔</h1>
+    <div class="game-controls">
+        <button id="new-game-btn" class="btn btn-primary">Нова гра</button>
+        <button id="reset-btn" class="btn btn-secondary">Скинути</button>
+    </div>
+</header>
+
+<!-- Main content -->
+<main class="main-content">
+    <!-- Game Info Sidebar -->
+    <aside class="sidebar">
+        <div class="player-info">
+            <div class="player white-player">
+                <h3>Білі</h3>
+                <div class="timer" id="white-timer">15:00</div>
+                <div class="captured-pieces" id="white-captured"></div>
+            </div>
+            <div class="current-turn" id="current-turn">
+                Хід білих
+            </div>
+            <div class="player black-player">
+                <h3>Чорні</h3>
+                <div class="timer" id="black-timer">15:00</div>
+                <div class="captured-pieces" id="black-captured"></div>
+            </div>
+        </div>
+
+        <div class="move-history">
+            <h3>Історія ходів</h3>
+            <div id="moves-list" class="moves-list">
+                <!-- Moves will be populated here -->
+            </div>
+        </div>
+
+        <div class="game-actions">
+            <button id="undo-btn" class="btn btn-secondary">↶ Скасувати хід</button>
+            <button id="save-game-btn" class="btn btn-secondary">💾 Зберегти гру</button>
+        </div>
+    </aside>
+
+    <!-- Chess Board Container -->
+    <div class="game-container">
+        <div class="board-container">
+            <!-- Coordinates labels -->
+            <div class="coordinates-top">
+                <span>a</span><span>b</span><span>c</span><span>d</span>
+                <span>e</span><span>f</span><span>g</span><span>h</span>
+            </div>
+
+            <div class="board-wrapper">
+                <div class="coordinates-left">
+                    <span>8</span><span>7</span><span>6</span><span>5</span>
+                    <span>4</span><span>3</span><span>2</span><span>1</span>
+                </div>
+
+                <!-- Chess Board 8x8 Grid -->
+                <div id="chess-board" class="chess-board">
+                    <!-- Board squares will be generated here by JavaScript -->
+                </div>
+
+                <div class="coordinates-right">
+                    <span>8</span><span>7</span><span>6</span><span>5</span>
+                    <span>4</span><span>3</span><span>2</span><span>1</span>
+                </div>
+            </div>
+
+            <div class="coordinates-bottom">
+                <span>a</span><span>b</span><span>c</span><span>d</span>
+                <span>e</span><span>f</span><span>g</span><span>h</span>
+            </div>
+        </div>
+
+        <!-- Game Status -->
+        <div class="game-status" id="game-status">
+            <p>Гра розпочата! Хід білих.</p>
+        </div>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <p>&copy; 2025 Шахи Online. Розроблено з ❤️</p>
+</footer>
+
+<!-- JavaScript files -->
+<script src="js/utils.js"></script>
+<script src="js/pieces.js"></script>
+<script src="js/board.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>
