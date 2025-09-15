@@ -1,0 +1,153 @@
+/* Шахові фігури */
+.piece {
+    font-size: 2.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    z-index: 5;
+    position: relative;
+}
+
+.piece:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+
+.piece.dragging {
+    transform: scale(1.2);
+    z-index: 1000;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+/* Білі фігури */
+.piece.white {
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Чорні фігури */
+.piece.black {
+    color: #2c3e50;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+/* Specific pieces using Unicode */
+.piece.king::before {
+    content: '♔';
+}
+
+.piece.queen::before {
+    content: '♕';
+}
+
+.piece.rook::before {
+    content: '♖';
+}
+
+.piece.bishop::before {
+    content: '♗';
+}
+
+.piece.knight::before {
+    content: '♘';
+}
+
+.piece.pawn::before {
+    content: '♙';
+}
+
+/* Чорні фігури (інші Unicode символи) */
+.piece.black.king::before {
+    content: '♚';
+}
+
+.piece.black.queen::before {
+    content: '♛';
+}
+
+.piece.black.rook::before {
+    content: '♜';
+}
+
+.piece.black.bishop::before {
+    content: '♝';
+}
+
+.piece.black.knight::before {
+    content: '♞';
+}
+
+.piece.black.pawn::before {
+    content: '♟';
+}
+
+/* Анімація переміщення */
+.piece.moving {
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Captured pieces в sidebar */
+.captured-pieces {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 10px;
+    min-height: 40px;
+    padding: 10px;
+    background: rgba(108, 117, 125, 0.1);
+    border-radius: 6px;
+}
+
+.captured-pieces .piece {
+    font-size: 1.5rem;
+    opacity: 0.7;
+    cursor: default;
+}
+
+.captured-pieces .piece:hover {
+    transform: none;
+    filter: none;
+}
+
+/* Promoted piece selection */
+.promotion-dialog {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid #2c3e50;
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    gap: 10px;
+    z-index: 2000;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.promotion-option {
+    width: 60px;
+    height: 60px;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.promotion-option:hover {
+    border-color: #3498db;
+    background: rgba(52, 152, 219, 0.1);
+}
+
+/* Responsive pieces */
+@media (max-width: 768px) {
+    .piece {
+        font-size: 2rem;
+    }
+
+    .captured-pieces .piece {
+        font-size: 1.2rem;
+    }
+}

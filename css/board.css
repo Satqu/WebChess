@@ -1,0 +1,162 @@
+/* Шахова дошка */
+.board-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.chess-board {
+    display: grid;
+    grid-template-columns: repeat(8, 60px);
+    grid-template-rows: repeat(8, 60px);
+    border: 3px solid #2c3e50;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    background: #fff;
+}
+
+/* Клітинки дошки */
+.square {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    font-size: 2rem;
+}
+
+/* Світлі клітинки */
+.square.light {
+    background-color: #f0d9b5;
+}
+
+/* Темні клітинки */
+.square.dark {
+    background-color: #b58863;
+}
+
+/* Hover ефект */
+.square:hover {
+    transform: scale(1.05);
+    box-shadow: inset 0 0 20px rgba(52, 152, 219, 0.5);
+    z-index: 10;
+}
+
+/* Виділена клітинка (вибрана фігура) */
+.square.selected {
+    background-color: #f39c12 !important;
+    box-shadow: 0 0 20px rgba(243, 156, 18, 0.8);
+    transform: scale(1.05);
+}
+
+/* Можливі ходи */
+.square.possible-move {
+    position: relative;
+}
+
+.square.possible-move::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(39, 174, 96, 0.8);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.8; }
+    50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.4; }
+    100% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.8; }
+}
+
+/* Координати */
+.coordinates-top,
+.coordinates-bottom {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin: 0 13px;
+}
+
+.coordinates-top span,
+.coordinates-bottom span {
+    width: 60px;
+    text-align: center;
+    font-weight: bold;
+    color: #2c3e50;
+    font-size: 1rem;
+}
+
+.coordinates-left,
+.coordinates-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+}
+
+.coordinates-left span,
+.coordinates-right span {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #2c3e50;
+    font-size: 1rem;
+}
+
+/* Підсвічування останнього ходу */
+.square.last-move {
+    background-color: rgba(255, 235, 59, 0.6) !important;
+    box-shadow: inset 0 0 15px rgba(255, 193, 7, 0.8);
+}
+
+/* Шах */
+.square.check {
+    background-color: rgba(231, 76, 60, 0.7) !important;
+    animation: checkBlink 1s infinite;
+}
+
+@keyframes checkBlink {
+    0%, 50% { background-color: rgba(231, 76, 60, 0.7) !important; }
+    51%, 100% { background-color: rgba(231, 76, 60, 0.9) !important; }
+}
+
+/* Responsive дошка */
+@media (max-width: 768px) {
+    .chess-board {
+        grid-template-columns: repeat(8, 45px);
+        grid-template-rows: repeat(8, 45px);
+    }
+
+    .square {
+        width: 45px;
+        height: 45px;
+        font-size: 1.5rem;
+    }
+
+    .coordinates-top span,
+    .coordinates-bottom span {
+        width: 45px;
+        font-size: 0.9rem;
+    }
+
+    .coordinates-left span,
+    .coordinates-right span {
+        height: 45px;
+        font-size: 0.9rem;
+    }
+
+    .board-container {
+        padding: 1rem;
+    }
+}
